@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animal Anatomy: Guess Who?</title>
+  <meta name="description" content="Interactive General Zoology anatomy elimination game for squid, earthworm, shrimp, and ant." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="app">
+    <!-- HOME -->
+    <section id="homeScreen" class="screen active">
+      <div class="home-art" aria-hidden="true">
+        <span class="bubble b1"></span>
+        <span class="bubble b2"></span>
+        <span class="leaf l1"></span>
+        <span class="leaf l2"></span>
+        <span class="shell"></span>
+      </div>
+
+      <div class="home-content">
+        <h1>ANIMAL<br /><span>GUESS WHO?</span></h1>
+        <p class="tagline">Explore the parts. Eliminate the possibilities. Learn the anatomy.</p>
+
+        <button id="playBtn" class="primary-btn">PLAY <span>▶</span></button>
+
+        <div class="how-card">
+          <div class="how-number">01</div>
+          <div>
+            <strong>Choose an organism</strong>
+            <p>Open one of the four organism cards.</p>
+          </div>
+        </div>
+        <div class="how-card">
+          <div class="how-number">02</div>
+          <div>
+            <strong>Explore its anatomy</strong>
+            <p>Switch external/internal views when available.</p>
+          </div>
+        </div>
+        <div class="how-card">
+          <div class="how-number">03</div>
+          <div>
+            <strong>Eliminate parts</strong>
+            <p>Click a part's card to turn it red, like a Guess Who tile.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ORGANISM SELECT -->
+    <section id="selectScreen" class="screen">
+      <header class="page-header">
+        <div>
+          <div class="eyebrow">CHOOSE YOUR SPECIMEN</div>
+          <h2>Who are you investigating?</h2>
+        </div>
+        <button class="ghost-btn" data-action="home">← Home</button>
+      </header>
+
+      <div id="organismGrid" class="organism-grid"></div>
+
+      <div class="select-tip">
+        <span class="tip-icon">✦</span>
+        Each card opens a different anatomy board. Click parts to eliminate them and click again to restore them.
+      </div>
+    </section>
+
+    <!-- ANATOMY -->
+    <section id="anatomyScreen" class="screen">
+      <header class="anatomy-header">
+        <button class="ghost-btn" data-action="select">← Organisms</button>
+        <div class="anatomy-title-wrap">
+          <div id="anatomyEyebrow" class="eyebrow"></div>
+          <h2 id="anatomyTitle"></h2>
+        </div>
+        <button id="resetBtn" class="outline-btn">Reset Eliminations</button>
+      </header>
+
+      <div class="anatomy-toolbar">
+        <div class="view-switch" id="viewSwitch"></div>
+        <div class="progress-pill">
+          <span id="activeCount">0</span> eliminated
+        </div>
+      </div>
+
+      <div class="anatomy-layout">
+        <div class="board-shell">
+          <div id="board" class="anatomy-board"></div>
+          <div class="board-caption">Click a part's card to eliminate it. Click it again to bring it back.</div>
+        </div>
+
+        <aside class="info-panel">
+          <div class="panel-top">
+            <span class="panel-kicker">LAST ACTION</span>
+            <h3 id="selectedPartTitle">No eliminations yet</h3>
+            <p id="selectedPartText">Tap any part card below to eliminate it. Tap it again to bring it back.</p>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="eliminated-head">
+            <span>ELIMINATED PARTS</span>
+            <span id="eliminatedCount">0</span>
+          </div>
+          <div id="eliminatedList" class="eliminated-list">
+            <div class="empty-state">No parts eliminated yet.</div>
+          </div>
+
+          <div class="panel-note">
+            <strong>Game rule:</strong> red cards are considered eliminated. Click a red card again to bring it back.
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
